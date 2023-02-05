@@ -1,0 +1,11 @@
+[target.thumbv7m-none-eabi]
+rustflags = [
+  "-C", "link-arg=-Tlink.x",
+]
+
+[alias]
+b = ["build", "--release", "--target", "thumbv7m-none-eabi", "-Z", "build-std=std,panic_abort", "-Z", "build-std-features=panic_immediate_abort"]
+bd = ["build", "--target", "thumbv7m-none-eabi"]
+
+[build]
+target = "thumbv7m-none-eabi"

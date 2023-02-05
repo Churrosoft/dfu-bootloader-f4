@@ -1,0 +1,36 @@
+[package]
+name = "churrosoft-bootloader"
+description = "Churrosoft DFU Bootloader"
+version = "0.1.0"
+authors = ["Ramiro Bou <ramiro@churrosoft.ar>"]
+edition = "2021"
+license = "MIT"
+keywords = ["no-std", "usb-device", "dfu"]
+
+[profile.release]
+opt-level = 's'
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
+
+incremental = false
+debug = false
+
+[dependencies]
+cortex-m = "0.7"
+cortex-m-rt = { version = "0.7.2", features = ["device"] }
+cortex-m-rtic = { version = "0.5.9", features = ["cortex-m-7"], default-features = false }
+panic-halt = "0.2.0"
+usbd-dfu = "0.2.0"
+embedded-storage = "0.2.0"
+arrayvec = { version = "0.5", default-features = false }
+numtoa = "0.2"
+usbd-webusb = "1.0.2"
+
+[dependencies.stm32f4xx-hal]
+version = "0.14.0"
+features = ["rt", "stm32f407", "usb_fs"]
+
+[dependencies.usb-device]
+version = "0.2.8"
